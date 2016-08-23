@@ -1,0 +1,124 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>sing-flyway</groupId>
+  <artifactId>sing-flyway</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>sing-flyway</name>
+  <description>sing-flyway</description>
+  
+  <properties>
+  		<flywaydb.version>4.0.3</flywaydb.version>
+  		<sqljdbc.version>4.0</sqljdbc.version>
+  		<db.url>jdbc:sqlserver://localhost;instanceName=SQLEXPRESS;DatabaseName=TestFlyWay</db.url>
+  		<db.username>testing</db.username>
+  		<db.password>1234</db.password>
+  		<!--  file location -->
+  		<sql.location.hk>filesystem:src/main/resources/db/migrations/hk</sql.location.hk>
+  		<sql.location.sg>filesystem:src/main/resources/db/migrations/sg</sql.location.sg>
+  </properties>
+  
+       <!-- 
+         <plugins>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>${flywaydb.version}</version>
+		               <configuration>
+						    <driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver>
+						    <url>${db.url}</url>
+						    <user>${db.username}</user>
+						    <password>${db.password}</password>
+						    <schemas>
+		            			<schema>dbo</schema>
+		            		</schemas>
+		            		<locations>
+			                    <location>
+			                      ${sql.location.hk}
+			                    </location>
+		                	</locations>
+						</configuration> 
+				<dependencies>
+					<dependency>
+						<groupId>com.microsoft.sqlserver</groupId>
+						<artifactId>sqljdbc4</artifactId>
+						<version>${sqljdbc.version}</version>
+					</dependency>
+				</dependencies>
+            </plugin>
+        </plugins>
+        -->
+        
+        
+        
+      <profiles>
+		<profile>
+			<id>hk</id>
+			<build>
+		        <plugins>
+		            <plugin>
+		                <groupId>org.flywaydb</groupId>
+		                <artifactId>flyway-maven-plugin</artifactId>
+		                <version>${flywaydb.version}</version>
+				               <configuration>
+								    <driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver>
+								    <url>${db.url}</url>
+								    <user>${db.username}</user>
+								    <password>${db.password}</password>
+								    <schemas>
+				            			<schema>dbo</schema>
+				            		</schemas>
+				            		<locations>
+					                    <location>
+					                      ${sql.location.hk}
+					                    </location>
+				                	</locations>
+								</configuration> 
+								<dependencies>
+									<dependency>
+										<groupId>com.microsoft.sqlserver</groupId>
+										<artifactId>sqljdbc4</artifactId>
+										<version>${sqljdbc.version}</version>
+									</dependency>
+								</dependencies>
+		            </plugin>
+		        </plugins>
+		        </build>
+		   </profile>
+		   <profile>
+			<id>sg</id>
+			<build>
+		        <plugins>
+		            <plugin>
+		                <groupId>org.flywaydb</groupId>
+		                <artifactId>flyway-maven-plugin</artifactId>
+		                <version>${flywaydb.version}</version>
+				               <configuration>
+								    <driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver>
+								    <url>${db.url}</url>
+								    <user>${db.username}</user>
+								    <password>${db.password}</password>
+								    <schemas>
+				            			<schema>dbo</schema>
+				            		</schemas>
+				            		<locations>
+					                    <location>
+					                      ${sql.location.sg}
+					                    </location>
+				                	</locations>
+								</configuration> 
+								<dependencies>
+									<dependency>
+										<groupId>com.microsoft.sqlserver</groupId>
+										<artifactId>sqljdbc4</artifactId>
+										<version>${sqljdbc.version}</version>
+									</dependency>
+								</dependencies>
+		            </plugin>
+		        </plugins>
+		        </build>
+		   </profile>
+		 </profiles>       
+       
+ 
+  
+</project>
